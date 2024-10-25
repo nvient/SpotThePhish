@@ -147,19 +147,4 @@ function endGame() {
     document.getElementById("result-text").textContent = resultText;
     document.getElementById("score-text").textContent = `Score: ${score} / ${scenarios.length}`;
 }
-function showScenario() {
-    if (currentScenarioIndex < scenarios.length) {
-        const scenario = scenarios[currentScenarioIndex];
-        document.getElementById("scenario-text").innerHTML = `
-            <div class="email-header">
-                <strong>From:</strong> ${scenario.sender}<br>
-                <strong>Subject:</strong> ${scenario.subject}
-            </div>
-            <div class="email-body">
-                ${scenario.body}
-            </div>
-        `;
-    } else {
-        endGame();
-    }
-}
+
