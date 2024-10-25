@@ -82,12 +82,19 @@ document.getElementById("phish-button").addEventListener("click", () => checkAns
 document.getElementById("safe-button").addEventListener("click", () => checkAnswer(false));
 
 function startGame() {
+    // Ensure score and scenario index are reset
     score = 0;
     currentScenarioIndex = 0;
+    
+    // Hide the start screen and show the scenario screen
+    document.getElementById("start-screen").style.display = "none";  // Hide the start screen
+    document.getElementById("scenario-screen").style.display = "block";  // Show the scenario screen
+    
+    // Shuffle scenarios and show the first one
     shuffleScenarios();
-    document.getElementById("start-screen").style.display = "none";
-    document.getElementById("scenario-screen").style.display = "block";
     showScenario();
+}
+
 }
 
 function shuffleScenarios() {
