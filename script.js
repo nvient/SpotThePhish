@@ -14,9 +14,9 @@ const scenarios = [
         explanation: "This email is phishing because of the suspicious sender domain and the urgent tone pressuring you to act quickly."
     },
     {
-        sender: "hr@[domain]",
+        sender: "nickf@[domain]",
         subject: "Important: Update to HR Policies",
-        body: "Please review the latest HR policy updates here.",
+        body: "Please review the latest HR policy updates here. No more fantasy football is allowed at the company, please cease all activity!",
         isPhish: false,
         explanation: "This is a legitimate email from your HR department. It has a reasonable sender address and no suspicious language or links."
     },
@@ -41,7 +41,7 @@ const scenarios = [
         explanation: "This is a phishing email due to the incorrect domain 'youcompany.com' and the pressure to act immediately."
     },
     {
-        sender: "it@[domain]",
+        sender: "tamib@[domain]",
         subject: "Project Files for Q4",
         body: "Attached are the project files for Q4. Let us know if you have questions.",
         isPhish: false,
@@ -49,13 +49,13 @@ const scenarios = [
     },
     {
         sender: "docs@[domain]",
-        subject: "[Sender Name] shared a document with you",
-        body: "[Sender Name] has shared a confidential document with you. Click here to view.",
+        subject: "John shared a document with you",
+        body: "John has shared a confidential document with you. Click here to view as soon as possible.",
         isPhish: true,
         explanation: "This is a phishing email as it uses a misspelled domain 'yourcomapny.com' and tries to trick you into clicking a link."
     },
     {
-        sender: "meeting@[domain]",
+        sender: "sallyj@[domain]",
         subject: "Meeting Confirmation for [Date/Time]",
         body: "Your meeting has been confirmed. Details are available here.",
         isPhish: false,
@@ -69,7 +69,7 @@ const scenarios = [
         explanation: "This is phishing as it uses 'yrcompany.com' instead of your company's domain and includes urgency to act quickly."
     },
     {
-        sender: "benefits@[domain]",
+        sender: "adrienner@[domain]",
         subject: "Reminder: Benefits Enrollment Deadline Approaching",
         body: "Please remember to complete your benefits enrollment by [Date]. More information is available here.",
         isPhish: false,
