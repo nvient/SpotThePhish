@@ -34,6 +34,7 @@ const scenarios = [
         isPhish: false,
         explanation: "This is a legitimate email inviting you to participate in a company survey, with no unusual sender domain or urgent language."
     },
+    {
         sender: "account-recovery@[domain]",
         subject: "Account Access Recovery Needed",
         body: "Your account access is temporarily restricted. Click below to verify your identity. Immediate action required to prevent account suspension.",
