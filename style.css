@@ -11,62 +11,56 @@ body {
 
 #game-container {
     text-align: center;
-    width: 300px;
+    width: 100%;
+}
+
+#start-screen, #scenario-screen, #result-screen {
+    max-width: 700px;
+    margin: 0 auto;
+    display: none;
+}
+
+#scenario-text {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border: 1px solid #ddd;
+    text-align: left;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#scenario-text strong {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#scenario-text .email-header {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#scenario-text .email-body {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 20px;
-}
-
-#phish-button.red {
-    background-color: #ff4d4d;
-    color: white;
-}
-
-#safe-button.green {
-    background-color: #4CAF50;
-    color: white;
-}
-/* style.css */
-#scenario-text {
-    background-color: #f9f9f9;
-    padding: 30px; /* Increase padding for larger space */
-    border: 1px solid #ddd;
-    max-width: 700px; /* Increase width */
-    margin: 0 auto;
-    text-align: left;
-    font-family: "Arial", sans-serif;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 18px; /* Increase overall font size */
-}
-
-#scenario-text strong {
-    font-weight: bold;
-    font-size: 20px; /* Make "From" and "Subject" larger */
-}
-
-#scenario-text .email-header {
-    font-size: 16px; /* Increase header font size */
-    color: #555;
-    margin-bottom: 20px;
-}
-
-#scenario-text .email-body {
-    font-size: 18px; /* Increase body font size */
-    line-height: 1.8; /* Increase line height for readability */
-    color: #333;
 }
 
 .response-button {
-    width: 120px; /* Increase button width */
-    height: 50px; /* Increase button height */
-    font-size: 18px; /* Increase button text size */
-    margin: 20px; /* Add more margin between buttons */
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+    margin: 10px;
     border: none;
-    border-radius: 5px; /* Slightly larger border radius */
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -78,4 +72,9 @@ button {
 .green {
     background-color: #2ecc71;
     color: white;
+}
+
+#result-text {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
