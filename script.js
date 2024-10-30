@@ -76,15 +76,12 @@ const scenarios = [
         explanation: "This is a legitimate reminder about benefits enrollment with no suspicious sender or content."
     }
 ];
-];
 
-// Event listeners
+// Event listener for the Start button
 document.getElementById("start-button").addEventListener("click", startGame);
-document.getElementById("phish-button").addEventListener("click", () => checkAnswer(true));
-document.getElementById("safe-button").addEventListener("click", () => checkAnswer(false));
 
 function startGame() {
-    console.log("Start button clicked"); // Debugging log
+    console.log("Start button clicked"); // Debugging log to ensure the function is called
     const emailInput = document.getElementById("email-input").value;
 
     // Basic email validation
@@ -105,27 +102,29 @@ function startGame() {
     } else {
         alert("Please enter a valid email address.");
     }
-
 }
 
+// Function to extract the domain from the email address
 function extractDomain(email) {
     const domain = email.substring(email.lastIndexOf("@") + 1);
     return domain.includes(".") ? domain : "";
 }
 
+// Function to personalize scenarios with the user's domain
 function personalizeScenarios() {
     for (let scenario of scenarios) {
         if (scenario.isPhish) {
-            // Use typosquatting for phishing emails
+            // Apply typosquatting for phishing emails
             scenario.sender = `alerts@${applyTyposquatting(userDomain)}`;
         } else {
-            // Use the user's actual domain for legitimate emails
+            // Use the actual user domain for legitimate emails
             scenario.sender = scenario.sender.replace("[domain]", userDomain);
         }
         scenario.body = scenario.body.replace("[domain]", userDomain);
     }
 }
 
+// Function to apply typosquatting techniques to the domain
 function applyTyposquatting(domain) {
     const techniques = [
         () => domain.replace("o", "0"),                 // Replace character
@@ -139,10 +138,12 @@ function applyTyposquatting(domain) {
     return randomTechnique();
 }
 
+// Function to shuffle scenarios
 function shuffleScenarios() {
     scenarios.sort(() => Math.random() - 0.5);
 }
 
+// Function to display the current scenario
 function showScenario() {
     if (currentScenarioIndex < scenarios.length) {
         const scenario = scenarios[currentScenarioIndex];
@@ -160,6 +161,7 @@ function showScenario() {
     }
 }
 
+// Function to handle the user's answer and provide feedback
 function checkAnswer(isPhish) {
     const scenario = scenarios[currentScenarioIndex];
     let feedback = "";
@@ -180,6 +182,7 @@ function checkAnswer(isPhish) {
     }, 3000);
 }
 
+// Function to end the game and display the results
 function endGame() {
     document.getElementById("scenario-screen").style.display = "none";
     document.getElementById("result-screen").style.display = "block";
@@ -194,4 +197,9 @@ function endGame() {
     document.getElementById("result-text").textContent = resultText;
     document.getElementById("score-text").textContent = `Score: ${score} / ${scenarios.length}`;
 }
+
+// Event listeners for the Phish and Safe buttons
+document.getElementById("phish-button").addEventListener("click", () => checkAnswer(true));
+document.getElementById("safe-button").addEventListener("click", () => checkAnswer(false));
+
 
