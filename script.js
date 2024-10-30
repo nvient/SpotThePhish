@@ -1,5 +1,10 @@
 // script.js
 
+let userDomain = "";
+let currentScenarioIndex = 0;
+let score = 0;
+
+// Scenarios array with placeholders for domain
 const scenarios = [
     {
         sender: "alerts@yourcompany-secure.com",
@@ -9,7 +14,7 @@ const scenarios = [
         explanation: "This email is phishing because of the suspicious sender domain ('yourcompany-secure.com' instead of your company's real domain) and the urgent tone pressuring you to act quickly."
     },
     {
-        sender: "hr@[entered domain]",
+        sender: "hr@[domain]",
         subject: "Important: Update to HR Policies",
         body: "Please review the latest HR policy updates here.",
         isPhish: false,
@@ -23,7 +28,7 @@ const scenarios = [
         explanation: "This is a phishing email because the sender domain 'your-compay.com' is a typographical error designed to trick you. Also, there is an unnecessary sense of urgency."
     },
     {
-        sender: "feedback@[entered domain]",
+        sender: "feedback@[domain]",
         subject: "Your Feedback Matters! Complete Our Survey",
         body: "We value your opinion! Please take a few minutes to complete this survey.",
         isPhish: false,
@@ -37,7 +42,7 @@ const scenarios = [
         explanation: "This is a phishing email due to the incorrect domain 'youcompany.com' and the pressure to act immediately."
     },
     {
-        sender: "it@[entered domain]",
+        sender: "it@[domain]",
         subject: "Project Files for Q4",
         body: "Attached are the project files for Q4. Let us know if you have questions.",
         isPhish: false,
@@ -51,7 +56,7 @@ const scenarios = [
         explanation: "This is a phishing email as it uses a misspelled domain 'yourcomapny.com' and tries to trick you into clicking a link."
     },
     {
-        sender: "meeting@[entered domain]",
+        sender: "meeting@[domain]",
         subject: "Meeting Confirmation for [Date/Time]",
         body: "Your meeting has been confirmed. Details are available here.",
         isPhish: false,
@@ -65,7 +70,7 @@ const scenarios = [
         explanation: "This is phishing as it uses 'yrcompany.com' instead of your company's domain and includes urgency to act quickly."
     },
     {
-        sender: "benefits@[entered domain]",
+        sender: "benefits@[domain]",
         subject: "Reminder: Benefits Enrollment Deadline Approaching",
         body: "Please remember to complete your benefits enrollment by [Date]. More information is available here.",
         isPhish: false,
@@ -73,20 +78,38 @@ const scenarios = [
     }
 ];
 
-let currentScenarioIndex = 0;
-let score = 0;
-
+// Event listeners
 document.getElementById("start-button").addEventListener("click", startGame);
 document.getElementById("phish-button").addEventListener("click", () => checkAnswer(true));
 document.getElementById("safe-button").addEventListener("click", () => checkAnswer(false));
 
 function startGame() {
-    score = 0;
-    currentScenarioIndex = 0;
-    shuffleScenarios();
-    document.getElementById("start-screen").style.display = "none";
-    document.getElementById("scenario-screen").style.display = "block";
-    showScenario();
+    const emailInput = document.getElementById("email-input").value;
+    userDomain = extractDomain(emailInput);
+    
+    if (userDomain) {
+        personalizeScenarios();
+        score = 0;
+        currentScenarioIndex = 0;
+        shuffleScenarios();
+        document.getElementById("start-screen").style.display = "none";
+        document.getElementById("scenario-screen").style.display = "block";
+        showScenario();
+    } else {
+        alert("Please enter a valid email address.");
+    }
+}
+
+function extractDomain(email) {
+    const domain = email.substring(email.lastIndexOf("@") + 1);
+    return domain.includes(".") ? domain : "";
+}
+
+function personalizeScenarios() {
+    for (let scenario of scenarios) {
+        scenario.sender = scenario.sender.replace("[domain]", userDomain);
+        scenario.body = scenario.body.replace("[domain]", userDomain);
+    }
 }
 
 function shuffleScenarios() {
