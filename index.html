@@ -8,20 +8,24 @@
 </head>
 <body>
     <div id="game-container">
-  <div id="start-screen">
-    <h1>Phishing Simulator Challenge</h1>
-    <button id="start-button">Start</button>
-</div>
+        <!-- Start Screen -->
+        <div id="start-screen" style="display: block;">
+            <h1>Phishing Simulator Challenge</h1>
+            <button id="start-button">Start</button>
+        </div>
 
-<div id="scenario-screen" style="display: none;">
-    <h2 id="scenario-text"></h2>
-    <button id="phish-button" class="response-button red">Phish</button>
-    <button id="safe-button" class="response-button green">Safe</button>
-</div>
-       
+        <!-- Scenario Screen -->
+        <div id="scenario-screen" style="display: none;">
+            <h2 id="scenario-text"></h2>
+            <button id="phish-button" class="response-button red">Phish</button>
+            <button id="safe-button" class="response-button green">Safe</button>
+        </div>
+
+        <!-- Result Screen -->
         <div id="result-screen" style="display: none;">
             <h2 id="result-text"></h2>
             <p id="score-text"></p>
+            <button onclick="location.reload()">Play Again</button> <!-- Reloads page to start over -->
         </div>
     </div>
 
