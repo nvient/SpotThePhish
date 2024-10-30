@@ -83,8 +83,6 @@ document.getElementById("start-button").addEventListener("click", startGame);
 document.getElementById("phish-button").addEventListener("click", () => checkAnswer(true));
 document.getElementById("safe-button").addEventListener("click", () => checkAnswer(false));
 
-document.getElementById("start-button").addEventListener("click", startGame);
-
 function startGame() {
     console.log("Start button clicked"); // Debugging log
     const emailInput = document.getElementById("email-input").value;
