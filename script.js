@@ -34,7 +34,48 @@ const scenarios = [
         isPhish: false,
         explanation: "This is a legitimate email inviting you to participate in a company survey, with no unusual sender domain or urgent language."
     },
-    // Add more scenarios here...
+        sender: "account-recovery@youcompany.com",
+        subject: "Account Access Recovery Needed",
+        body: "Your account access is temporarily restricted. Click below to verify your identity. Immediate action required to prevent account suspension.",
+        isPhish: true,
+        explanation: "This is a phishing email due to the incorrect domain 'youcompany.com' and the pressure to act immediately."
+    },
+    {
+        sender: "it@[domain]",
+        subject: "Project Files for Q4",
+        body: "Attached are the project files for Q4. Let us know if you have questions.",
+        isPhish: false,
+        explanation: "This email is legitimate, sent from the company's IT department with no suspicious language or sender."
+    },
+    {
+        sender: "docs@yourcomapny.com",
+        subject: "[Sender Name] shared a document with you",
+        body: "[Sender Name] has shared a confidential document with you. Click here to view.",
+        isPhish: true,
+        explanation: "This is a phishing email as it uses a misspelled domain 'yourcomapny.com' and tries to trick you into clicking a link."
+    },
+    {
+        sender: "meeting@[domain]",
+        subject: "Meeting Confirmation for [Date/Time]",
+        body: "Your meeting has been confirmed. Details are available here.",
+        isPhish: false,
+        explanation: "This is a legitimate meeting confirmation from a company address with no suspicious content."
+    },
+    {
+        sender: "it-support@yrcompany.com",
+        subject: "Password Expiring in 24 Hours",
+        body: "Your password will expire in 24 hours. Update now to avoid lockout.",
+        isPhish: true,
+        explanation: "This is phishing as it uses 'yrcompany.com' instead of your company's domain and includes urgency to act quickly."
+    },
+    {
+        sender: "benefits@[domain]",
+        subject: "Reminder: Benefits Enrollment Deadline Approaching",
+        body: "Please remember to complete your benefits enrollment by [Date]. More information is available here.",
+        isPhish: false,
+        explanation: "This is a legitimate reminder about benefits enrollment with no suspicious sender or content."
+    }
+];
 ];
 
 // Event listeners
