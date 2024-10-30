@@ -83,21 +83,31 @@ document.getElementById("start-button").addEventListener("click", startGame);
 document.getElementById("phish-button").addEventListener("click", () => checkAnswer(true));
 document.getElementById("safe-button").addEventListener("click", () => checkAnswer(false));
 
+document.getElementById("start-button").addEventListener("click", startGame);
+
 function startGame() {
+    console.log("Start button clicked"); // Debugging log
     const emailInput = document.getElementById("email-input").value;
-    userDomain = extractDomain(emailInput);
-    
-    if (userDomain) {
-        personalizeScenarios();
-        score = 0;
-        currentScenarioIndex = 0;
-        shuffleScenarios();
-        document.getElementById("start-screen").style.display = "none";
-        document.getElementById("scenario-screen").style.display = "block";
-        showScenario();
+
+    // Basic email validation
+    if (emailInput && emailInput.includes("@")) {
+        userDomain = extractDomain(emailInput);
+
+        if (userDomain) {
+            personalizeScenarios();
+            score = 0;
+            currentScenarioIndex = 0;
+            shuffleScenarios();
+            document.getElementById("start-screen").style.display = "none";
+            document.getElementById("scenario-screen").style.display = "block";
+            showScenario();
+        } else {
+            alert("Please enter a valid email address with a proper domain.");
+        }
     } else {
         alert("Please enter a valid email address.");
     }
+
 }
 
 function extractDomain(email) {
@@ -187,28 +197,3 @@ function endGame() {
     document.getElementById("score-text").textContent = `Score: ${score} / ${scenarios.length}`;
 }
 
-document.getElementById("start-button").addEventListener("click", startGame);
-
-function startGame() {
-    console.log("Start button clicked"); // Debugging log
-    const emailInput = document.getElementById("email-input").value;
-
-    // Basic email validation
-    if (emailInput && emailInput.includes("@")) {
-        userDomain = extractDomain(emailInput);
-
-        if (userDomain) {
-            personalizeScenarios();
-            score = 0;
-            currentScenarioIndex = 0;
-            shuffleScenarios();
-            document.getElementById("start-screen").style.display = "none";
-            document.getElementById("scenario-screen").style.display = "block";
-            showScenario();
-        } else {
-            alert("Please enter a valid email address with a proper domain.");
-        }
-    } else {
-        alert("Please enter a valid email address.");
-    }
-}
