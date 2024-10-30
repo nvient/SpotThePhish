@@ -81,12 +81,15 @@ const scenarios = [
 document.getElementById("start-button").addEventListener("click", startGame);
 
 function startGame() {
-    console.log("Start button clicked"); // Debugging log to ensure the function is called
+    console.log("Start button clicked"); // Log to confirm the button is working
+
     const emailInput = document.getElementById("email-input").value;
+    console.log("Email entered:", emailInput); // Log the email entered
 
     // Basic email validation
     if (emailInput && emailInput.includes("@")) {
         userDomain = extractDomain(emailInput);
+        console.log("User domain extracted:", userDomain); // Log the domain extracted
 
         if (userDomain) {
             personalizeScenarios();
@@ -97,9 +100,11 @@ function startGame() {
             document.getElementById("scenario-screen").style.display = "block";
             showScenario();
         } else {
+            console.log("Invalid domain extracted."); // Log if the domain is not valid
             alert("Please enter a valid email address with a proper domain.");
         }
     } else {
+        console.log("Invalid email format."); // Log if the email format is invalid
         alert("Please enter a valid email address.");
     }
 }
