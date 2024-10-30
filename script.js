@@ -34,7 +34,7 @@ const scenarios = [
         isPhish: false,
         explanation: "This is a legitimate email inviting you to participate in a company survey, with no unusual sender domain or urgent language."
     },
-        sender: "account-recovery@youcompany.com",
+        sender: "account-recovery@[domain]",
         subject: "Account Access Recovery Needed",
         body: "Your account access is temporarily restricted. Click below to verify your identity. Immediate action required to prevent account suspension.",
         isPhish: true,
@@ -48,7 +48,7 @@ const scenarios = [
         explanation: "This email is legitimate, sent from the company's IT department with no suspicious language or sender."
     },
     {
-        sender: "docs@yourcomapny.com",
+        sender: "docs@[domain]",
         subject: "[Sender Name] shared a document with you",
         body: "[Sender Name] has shared a confidential document with you. Click here to view.",
         isPhish: true,
@@ -62,7 +62,7 @@ const scenarios = [
         explanation: "This is a legitimate meeting confirmation from a company address with no suspicious content."
     },
     {
-        sender: "it-support@yrcompany.com",
+        sender: "it-support@[domain]",
         subject: "Password Expiring in 24 Hours",
         body: "Your password will expire in 24 hours. Update now to avoid lockout.",
         isPhish: true,
