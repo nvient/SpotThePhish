@@ -5,73 +5,72 @@ const scenarios = [
         sender: "alerts@yourcompany-secure.com",
         subject: "Urgent: Unusual Login Attempt Detected",
         body: "We detected an unusual login attempt on your account. Please verify your activity. Failure to respond may result in account suspension.",
-        isPhish: true
+        isPhish: true,
         explanation: "This email is phishing because of the suspicious sender domain ('yourcompany-secure.com' instead of your company's real domain) and the urgent tone pressuring you to act quickly."
     },
     {
         sender: "hr@[entered domain]",
         subject: "Important: Update to HR Policies",
         body: "Please review the latest HR policy updates here.",
-        isPhish: false
-        explanation: Because
+        isPhish: false,
+        explanation: "This is a legitimate email from your HR department. It has a reasonable sender address and no suspicious language or links."
     },
     {
         sender: "payroll@your-compay.com",
         subject: "Immediate Action: Payroll Information Needed",
         body: "Your recent payroll information needs verification. Update your details here. If unverified, payroll may be delayed.",
-        isPhish: true
-        explanation: Because
+        isPhish: true,
+        explanation: "This is a phishing email because the sender domain 'your-compay.com' is a typographical error designed to trick you. Also, there is an unnecessary sense of urgency."
     },
     {
         sender: "feedback@[entered domain]",
         subject: "Your Feedback Matters! Complete Our Survey",
         body: "We value your opinion! Please take a few minutes to complete this survey.",
-        isPhish: false
-        explanation: Because
+        isPhish: false,
+        explanation: "This is a legitimate email inviting you to participate in a company survey, with no unusual sender domain or urgent language."
     },
     {
         sender: "account-recovery@youcompany.com",
         subject: "Account Access Recovery Needed",
         body: "Your account access is temporarily restricted. Click below to verify your identity. Immediate action required to prevent account suspension.",
-        isPhish: true
-        explanation: Because
+        isPhish: true,
+        explanation: "This is a phishing email due to the incorrect domain 'youcompany.com' and the pressure to act immediately."
     },
     {
         sender: "it@[entered domain]",
         subject: "Project Files for Q4",
         body: "Attached are the project files for Q4. Let us know if you have questions.",
-        isPhish: false
-        explanation: Because
+        isPhish: false,
+        explanation: "This email is legitimate, sent from the company's IT department with no suspicious language or sender."
     },
     {
         sender: "docs@yourcomapny.com",
         subject: "[Sender Name] shared a document with you",
         body: "[Sender Name] has shared a confidential document with you. Click here to view.",
-        isPhish: true
-        explanation: Because
-},
-{
+        isPhish: true,
+        explanation: "This is a phishing email as it uses a misspelled domain 'yourcomapny.com' and tries to trick you into clicking a link."
+    },
+    {
         sender: "meeting@[entered domain]",
         subject: "Meeting Confirmation for [Date/Time]",
         body: "Your meeting has been confirmed. Details are available here.",
-        isPhish: false
-        explanation: Because
-},
-{
-    sender: "it-support@yrcompany.com",
-    subject: "Password Expiring in 24 Hours",
-    body: "Your password will expire in 24 hours. Update now to avoid lockout.",
-    isPhish: true
-    explanation: Because
-},
-{
-    sender: "benefits@[entered domain]",
-    subject: "Reminder: Benefits Enrollment Deadline Approaching",
-    body: "Please remember to complete your benefits enrollment by [Date]. More information is available here.",
-    isPhish: false
-    explanation: Because
-},
-
+        isPhish: false,
+        explanation: "This is a legitimate meeting confirmation from a company address with no suspicious content."
+    },
+    {
+        sender: "it-support@yrcompany.com",
+        subject: "Password Expiring in 24 Hours",
+        body: "Your password will expire in 24 hours. Update now to avoid lockout.",
+        isPhish: true,
+        explanation: "This is phishing as it uses 'yrcompany.com' instead of your company's domain and includes urgency to act quickly."
+    },
+    {
+        sender: "benefits@[entered domain]",
+        subject: "Reminder: Benefits Enrollment Deadline Approaching",
+        body: "Please remember to complete your benefits enrollment by [Date]. More information is available here.",
+        isPhish: false,
+        explanation: "This is a legitimate reminder about benefits enrollment with no suspicious sender or content."
+    }
 ];
 
 let currentScenarioIndex = 0;
@@ -82,19 +81,12 @@ document.getElementById("phish-button").addEventListener("click", () => checkAns
 document.getElementById("safe-button").addEventListener("click", () => checkAnswer(false));
 
 function startGame() {
-    // Ensure score and scenario index are reset
     score = 0;
     currentScenarioIndex = 0;
-    
-    // Hide the start screen and show the scenario screen
-    document.getElementById("start-screen").style.display = "none";  // Hide the start screen
-    document.getElementById("scenario-screen").style.display = "block";  // Show the scenario screen
-    
-    // Shuffle scenarios and show the first one
     shuffleScenarios();
+    document.getElementById("start-screen").style.display = "none";
+    document.getElementById("scenario-screen").style.display = "block";
     showScenario();
-}
-
 }
 
 function shuffleScenarios() {
@@ -128,16 +120,14 @@ function checkAnswer(isPhish) {
         feedback = `<p style="color: red;">Incorrect!</p>`;
     }
 
-    // Show the explanation for why the scenario is phish or legit
     feedback += `<p>${scenario.explanation}</p>`;
     
     document.getElementById("scenario-text").innerHTML = feedback;
 
-    // Move to the next scenario after a brief delay
     setTimeout(() => {
         currentScenarioIndex++;
         showScenario();
-    }, 3000);  // Wait for 3 seconds before moving to the next scenario
+    }, 3000);
 }
 
 function endGame() {
@@ -154,4 +144,3 @@ function endGame() {
     document.getElementById("result-text").textContent = resultText;
     document.getElementById("score-text").textContent = `Score: ${score} / ${scenarios.length}`;
 }
-
